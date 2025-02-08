@@ -1,16 +1,19 @@
 ---
-html_document:
-  toc: true
-  toc_depth: 5
+title: "Transcriptomic insights into late-onset Alzheimer’s disease: differential
+  gene expression analysis"
 author: "Silvana Yalú Cristo Martínez"
 date: "2025-02-05"
 output:
+  pdf_document:
+    toc: true
+    toc_depth: '5'
   html_document:
     toc: true
     toc_depth: '5'
     df_print: paged
-title: "Transcriptomic insights into late-onset Alzheimer’s Disease: differential
-  gene expression analysis"
+html_document:
+  toc: true
+  toc_depth: 5
 toc-title: Índice de contenidos
 header-includes:
 - \usepackage{tocloft}
@@ -28,7 +31,7 @@ For this analysis, publicly available RNA-Seq data from hippocampal samples of L
 
 Building upon these findings, this analysis aimed to identify differentially expressed genes, validate previously reported molecular signatures, and explore new potential LOAD-related mechanisms. Notably, genes such as SERPINE1 and VGLL3 were identified as significantly differentially expressed, reinforcing prior evidence on their role in LOAD pathology. The results underscore the value of transcriptomic studies in uncovering molecular drivers of disease and provide a foundation for further experimental validation and therapeutic exploration.
 
-```{r, echo=FALSE, fig.cap="MRI and PET scans of a patient with Alzheimer’s disease. Edison, P. Neurology Imaging Unit, Centre for Translational Imaging, Imperial College London). Rerieved from {https://www.medimaging.es/medicina-nuclear/articles/294756318/combinan-pet-y-rm-para-visualizar-desarrollo-de-alzheimer.html}.", out.width="50%", out.height="60%", fig.align="center"} 
+```{r, echo=FALSE, fig.cap="MRI and PET scans of a patient with Alzheimer’s disease. Edison, P. Neurology Imaging Unit, Centre for Translational Imaging, Imperial College London). Rerieved from \\href{https://www.medimaging.es/medicina-nuclear/articles/294756318/combinan-pet-y-rm-para-visualizar-desarrollo-de-alzheimer.html}.", out.width="50%", out.height="60%", fig.align="center"} 
 knitr::include_graphics("AD_image.jpeg")
 ```
 
@@ -246,7 +249,7 @@ ggplot(as.data.frame(colData(rse_gene_SRP056604)), aes(
   labs(
     x = "Subject group (control vs disease)",
     y = "Proportion of assigned genes",
-    title = "Relationship between subject group and proportion of assigned Genes"
+    title = "Relationship between subject group and proportion of assigned genes"
   )
 
 ```
@@ -421,7 +424,7 @@ table(de_results$P.Value < 0.05)
 
 The MA plot provides a clear visualization of gene expression changes across all analyzed genes, emphasizing the log fold change (logFC) against the log-average expression (AveExpr). This graphical representation allows easy identification of genes with significant differential expression.
 
-```{r echo=TRUE, fig.align='center', fig.cap="MA plot of gene expression changes", fig.height=4, fig.width=7}
+```{r echo=TRUE, warning=FALSE, fig.align='center', fig.cap="MA plot of gene expression changes", fig.height=4, fig.width=7}
 
 # Load required library
 library(ggplot2)
@@ -550,8 +553,8 @@ pheatmap(
   annotation_col = df,    # Add column annotations
   annotation_colors = list(
     SubjectGroup = c("age-matched control" = "cornsilk3", 
-                     "LOAD (late onset of Alzheimer’s disease)" = "rosybrown"),
-    Gender = c("male" = "paleturquoise3", "female" = "pink")
+                     "LOAD (late onset of Alzheimer’s disease)" = "cornsilk4"),
+    Gender = c("male" = "paleturquoise3", "female" = "lightpink")
   ),
   color = colorRampPalette(c("navy", "white", "firebrick"))(50),  # Color scale
   fontsize = 8,  # Font size
